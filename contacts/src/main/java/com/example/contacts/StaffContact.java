@@ -1,3 +1,5 @@
+package com.example.contacts;
+
 import javax.swing.text.html.ImageView;
 
 public class StaffContact {

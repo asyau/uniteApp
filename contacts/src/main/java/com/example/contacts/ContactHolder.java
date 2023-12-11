@@ -1,3 +1,5 @@
+package com.example.contacts;
+
 import java.util.ArrayList;
 
 public class ContactHolder {
