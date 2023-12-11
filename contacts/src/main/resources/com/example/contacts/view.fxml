@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <HBox prefHeight="55.0" prefWidth="900.0" BorderPane.alignment="CENTER" />
+   </top>
+   <right>
+      <SplitPane dividerPositions="0.10405156537753223" orientation="VERTICAL" prefHeight="545.0" prefWidth="629.0" BorderPane.alignment="CENTER">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="40.0" prefWidth="627.0">
+               <children>
+                  <HBox layoutX="20.0" layoutY="10.0" prefHeight="40.0" prefWidth="400.0">
+                     <children>
+                        <Label contentDisplay="CENTER" text="Seach Box">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets right="15.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField prefHeight="26.0" prefWidth="267.0" />
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <TableView layoutX="-1.0" layoutY="-5.0" prefHeight="488.0" prefWidth="630.0">
+                    <columns>
+                      <TableColumn prefWidth="75.0" text="C1" />
+                      <TableColumn prefWidth="75.0" text="C2" />
+                        <TableColumn prefWidth="75.0" text="Column X" />
+                        <TableColumn prefWidth="75.0" text="Column X" />
+                        <TableColumn prefWidth="75.0" text="Column X" />
+                        <TableColumn prefWidth="253.99993896484375" text="Column X" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </right>
+   <left>
+      <HBox prefHeight="545.0" prefWidth="268.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="545.0" prefWidth="277.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <ScrollPane prefHeight="574.0" prefWidth="268.0">
+                     <content>
+                        <VBox prefHeight="550.0" prefWidth="249.0" spacing="10.0">
+                           <children>
+                              <HBox prefHeight="45.0" prefWidth="200.0">
+                                 <children>
+                                    <Label text="Sağlık Merkezi - Merkez">
+                                       <HBox.margin>
+                                          <Insets left="10.0" top="12.5" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <Label text="2664337">
+                                       <HBox.margin>
+                                          <Insets left="50.0" top="12.5" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                               <HBox prefHeight="45.0" prefWidth="200.0">
+                                   <children>
+                                       <Label text="Sağlık Merkezi - Doğu">
+                                           <HBox.margin>
+                                               <Insets left="10.0" top="12.5" />
+                                           </HBox.margin>
+                                       </Label>
+                                       <Label text="2665142">
+                                           <HBox.margin>
+                                               <Insets left="60.0" top="12.5" />
+                                           </HBox.margin>
+                                       </Label>
+                                   </children>
+                               </HBox>
+                               <HBox prefHeight="45.0" prefWidth="200.0">
+                                   <children>
+                                       <Label text="Güvenlik 9-17">
+                                           <HBox.margin>
+                                               <Insets left="10.0" top="12.5" />
+                                           </HBox.margin>
+                                       </Label>
+                                       <Label text="2664492">
+                                           <HBox.margin>
+                                               <Insets left="100.0" top="12.5" />
+                                           </HBox.margin>
+                                       </Label>
+                                   </children>
+                               </HBox>
+                               <HBox prefHeight="45.0" prefWidth="200.0">
+                                   <children>
+                                       <Label text="Güvenlik 17-9">
+                                           <HBox.margin>
+                                               <Insets left="10.0" top="12.5" />
+                                           </HBox.margin>
+                                       </Label>
+                                       <Label text="2664491">
+                                           <HBox.margin>
+                                               <Insets left="100.0" top="12.5" />
+                                           </HBox.margin>
+                                       </Label>
+                                   </children>
+                               </HBox>
+                               <HBox prefHeight="45.0" prefWidth="200.0">
+                                   <children>
+                                       <Label text="Güvenlik Hafta sonu">
+                                           <HBox.margin>
+                                               <Insets left="10.0" top="12.5" />
+                                           </HBox.margin>
+                                       </Label>
+                                       <Label text="2664491">
+                                           <HBox.margin>
+                                               <Insets left="70.0" top="12.5" />
+                                           </HBox.margin>
+                                       </Label>
+                                   </children>
+                               </HBox>
+                               <HBox prefHeight="45.0" prefWidth="200.0">
+                                   <children>
+                                       <Label text="İtfaiye">
+                                           <HBox.margin>
+                                               <Insets left="10.0" top="12.5" />
+                                           </HBox.margin>
+                                       </Label>
+                                       <Label text="110">
+                                           <HBox.margin>
+                                               <Insets left="170.0" top="12.5" />
+                                           </HBox.margin>
+                                       </Label>
+                                   </children>
+                               </HBox>
+                               <HBox prefHeight="45.0" prefWidth="200.0">
+                                   <children>
+                                       <Label text="Polis">
+                                           <HBox.margin>
+                                               <Insets left="10.0" top="12.5" />
+                                           </HBox.margin>
+                                       </Label>
+                                       <Label text="155">
+                                           <HBox.margin>
+                                               <Insets left="175.0" top="12.5" />
+                                           </HBox.margin>
+                                       </Label>
+                                   </children>
+                               </HBox>
+                               <HBox prefHeight="45.0" prefWidth="200.0">
+                                   <children>
+                                       <Label text="Jandarma">
+                                           <HBox.margin>
+                                               <Insets left="10.0" top="12.5" />
+                                           </HBox.margin>
+                                       </Label>
+                                       <Label text="156">
+                                           <HBox.margin>
+                                               <Insets left="145.0" top="12.5" />
+                                           </HBox.margin>
+                                       </Label>
+                                   </children>
+                               </HBox>
+                               <HBox prefHeight="45.0" prefWidth="200.0">
+                                   <children>
+                                       <Label text="Ambulans">
+                                           <HBox.margin>
+                                               <Insets left="10.0" top="12.5" />
+                                           </HBox.margin>
+                                       </Label>
+                                       <Label text="112">
+                                           <HBox.margin>
+                                               <Insets left="148.0" top="12.5" />
+                                           </HBox.margin>
+                                       </Label>
+                                   </children>
+                               </HBox>
+                               <HBox prefHeight="45.0" prefWidth="200.0">
+                                   <children>
+                                       <Label text="Eczane (Merkez Kampüs)">
+                                           <HBox.margin>
+                                               <Insets left="10.0" top="12.5" />
+                                           </HBox.margin>
+                                       </Label>
+                                       <Label text="2664140">
+                                           <HBox.margin>
+                                               <Insets left="40.0" top="12.5" />
+                                           </HBox.margin>
+                                       </Label>
+                                   </children>
+                               </HBox>
+                               <HBox prefHeight="45.0" prefWidth="200.0">
+                                   <children>
+                                       <Label text="Güvenlik:Lojmanlar(M)">
+                                           <HBox.margin>
+                                               <Insets left="10.0" top="12.5" />
+                                           </HBox.margin>
+                                       </Label>
+                                       <Label text="1234, 1700">
+                                           <HBox.margin>
+                                               <Insets left="50.0" top="12.5" />
+                                           </HBox.margin>
+                                       </Label>
+                                   </children>
+                               </HBox>
+                               <HBox prefHeight="45.0" prefWidth="200.0">
+                                   <children>
+                                       <Label text="Güvenlik:Lojmanlar(D)">
+                                           <HBox.margin>
+                                               <Insets left="10.0" top="12.5" />
+                                           </HBox.margin>
+                                       </Label>
+                                       <Label text="5093, 5348">
+                                           <HBox.margin>
+                                               <Insets left="50.0" top="12.5" />
+                                           </HBox.margin>
+                                       </Label>
+                                   </children>
+                               </HBox>
+                               <HBox prefHeight="45.0" prefWidth="200.0">
+                                   <children>
+                                       <Label text="Güvenlik:Nizamiye(M)">
+                                           <HBox.margin>
+                                               <Insets left="10.0" top="12.5" />
+                                           </HBox.margin>
+                                       </Label>
+                                       <Label text="1700, 1701">
+                                           <HBox.margin>
+                                               <Insets left="50.0" top="12.5" />
+                                           </HBox.margin>
+                                       </Label>
+                                   </children>
+                               </HBox>
+                               <HBox prefHeight="45.0" prefWidth="200.0">
+                                   <children>
+                                       <Label text="Güvenlik:Nizamiye(D)">
+                                           <HBox.margin>
+                                               <Insets left="10.0" top="12.5" />
+                                           </HBox.margin>
+                                       </Label>
+                                       <Label text="5347, 5348">
+                                           <HBox.margin>
+                                               <Insets left="50.0" top="12.5" />
+                                           </HBox.margin>
+                                       </Label>
+                                   </children>
+                               </HBox>
+                               <HBox prefHeight="45.0" prefWidth="200.0">
+                                   <children>
+                                       <Label text="Öğrenci İşleri Müdürlüğü">
+                                           <HBox.margin>
+                                               <Insets left="10.0" top="12.5" />
+                                           </HBox.margin>
+                                       </Label>
+                                       <Label text="1240, 1241">
+                                           <HBox.margin>
+                                               <Insets left="40.0" top="12.5" />
+                                           </HBox.margin>
+                                       </Label>
+                                   </children>
+                               </HBox>
+                               <HBox prefHeight="45.0" prefWidth="200.0">
+                                   <children>
+                                       <Label text="Spor Merkezi">
+                                           <HBox.margin>
+                                               <Insets left="10.0" top="12.5" />
+                                           </HBox.margin>
+                                       </Label>
+                                       <Label text="1993">
+                                           <HBox.margin>
+                                               <Insets left="130.0" top="12.5" />
+                                           </HBox.margin>
+                                       </Label>
+                                   </children>
+                               </HBox>
+                               <HBox prefHeight="45.0" prefWidth="200.0">
+                                   <children>
+                                       <Label text="Mali İşler Müdürlüğü">
+                                           <HBox.margin>
+                                               <Insets left="10.0" top="12.5" />
+                                           </HBox.margin>
+                                       </Label>
+                                       <Label text="8056, 8057">
+                                           <HBox.margin>
+                                               <Insets left="60.0" top="12.5" />
+                                           </HBox.margin>
+                                       </Label>
+                                   </children>
+                               </HBox>
+                               <HBox prefHeight="45.0" prefWidth="200.0">
+                                   <children>
+                                       <Label text="Genel Sekreterlik">
+                                           <HBox.margin>
+                                               <Insets left="10.0" top="12.5" />
+                                           </HBox.margin>
+                                       </Label>
+                                       <Label text="1204,1205">
+                                           <HBox.margin>
+                                               <Insets left="80.0" top="12.5" />
+                                           </HBox.margin>
+                                       </Label>
+                                   </children>
+                               </HBox>
+                           </children></VBox>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </left>
+</BorderPane>
