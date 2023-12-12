@@ -1,9 +1,9 @@
-package com.example.deneme4;
+package com.example.announcement;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class HelloController {
+public class AnnouncementController {
     @FXML
     private Label welcomeText;
 
