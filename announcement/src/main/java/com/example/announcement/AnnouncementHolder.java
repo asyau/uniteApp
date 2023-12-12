@@ -1,3 +1,5 @@
+package com.example.announcement;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -9,8 +11,8 @@ public class AnnouncementHolder {
 
     public AnnouncementHolder(ArrayList<Announcement> anns) {
         this.anns = anns;
-        minDate = (Calendar) Application.currentTime.clone();
-        maxDate = (Calendar) Application.currentTime.clone();
+        //minDate = (Calendar) Application.currentTime.clone();
+        //maxDate = (Calendar) Application.currentTime.clone();
         maxDate.add(Calendar.DATE, 7);
         minString = calToString(minDate);
         maxString = calToString(maxDate);
