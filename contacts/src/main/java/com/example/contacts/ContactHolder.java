@@ -5,10 +5,8 @@ import java.util.ArrayList;
 public class ContactHolder {
 
     private ArrayList<StaffContact> staff;
-    private ArrayList<EmergencyContact> emergency;
 
-    public ContactHolder(ArrayList<StaffContact> staff, ArrayList<EmergencyContact> emergency){
-        this.emergency = emergency;
+    public ContactHolder(ArrayList<StaffContact> staff){
         this.staff = staff;
     }
 
@@ -25,23 +23,15 @@ public class ContactHolder {
 
     public static boolean containsAny(String mainString, String[] stringsToCheck) {
         for (String substring : stringsToCheck) {
-            if (mainString.contains(substring)) {
+            if (mainString.toLowerCase().contains(substring.toLowerCase())) {
                 return true;
             }
         }
         return false;
     }
-    
-    public void setEmergency(ArrayList<EmergencyContact> emergency) {
-        this.emergency = emergency;
-    }
 
     public void setStaff(ArrayList<StaffContact> staff) {
         this.staff = staff;
-    }
-
-    public ArrayList<EmergencyContact> getEmergency() {
-        return emergency;
     }
 
     public ArrayList<StaffContact> getStaff() {
