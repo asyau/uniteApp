@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+    <center>
+        <AnchorPane prefHeight="400.0" prefWidth="294.0" BorderPane.alignment="CENTER">
+            <children>
+                <HBox layoutX="60.0" layoutY="150.0">
+                    <children>
+                        <VBox spacing="10.0">
+                            <children>
+                                <Text fill="#1518c9" strokeType="OUTSIDE" strokeWidth="0.0" text="SIGN UP!">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                </Text>
+                                <Label text="Name" >
+                                    <font>
+                                        <Font size="14.0" />
+                                    </font>
+                                </Label>
+                                <TextField fx:id="SignUpPageNameText" prefHeight="26.0" prefWidth="300.0" />
+                                <Label text="Bilkent Mail Address">
+                                    <font>
+                                        <Font size="14.0" />
+                                    </font>
+                                </Label>
+                                <TextField fx:id="bilkentMailAddress" prefHeight="26.0" prefWidth="300.0" />
+                                <Label text="Password">
+                                    <font>
+                                        <Font size="14.0" />
+                                    </font>
+                                </Label>
+                                <PasswordField alignment="CENTER" prefHeight="26.0" prefWidth="300.0" />
+                                <HBox spacing="10.0">
+                                    <Label text="Already have an account?">
+                                        <font>
+                                            <Font size="12.0" />
+                                        </font>
+                                    </Label>
+                                    <Button mnemonicParsing="false" prefHeight="20.0" prefWidth="60.0" text="Login" />
+                                </HBox>
+                                <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="300.0" text="Sign Up">
+                                    <font>
+                                        <Font size="14.0" />
+                                    </font>
+                                </Button>
+                                <Label fx:id="viewer" />
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+            </children>
+        </AnchorPane>
+    </center>
+    <right>
+        <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <center>
+                <ImageView fitHeight="300.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                    <image>
+                        <Image url="/unite-high-resolution-logo-transparent.png" />
+                    </image>
+                </ImageView>
+            </center>
+        </BorderPane>
+    </right>
+</BorderPane>
