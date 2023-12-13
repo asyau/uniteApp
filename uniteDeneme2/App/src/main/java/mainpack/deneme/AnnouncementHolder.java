@@ -4,6 +4,7 @@ import mainpack.deneme.Announcement;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.TimeZone;
 
 public class AnnouncementHolder {
     Calendar minDate;
@@ -13,8 +14,8 @@ public class AnnouncementHolder {
 
     public AnnouncementHolder(ArrayList<Announcement> anns) {
         this.anns = anns;
-        //minDate = (Calendar) Application.currentTime.clone();
-        //maxDate = (Calendar) Application.currentTime.clone();
+        minDate = (Calendar) Calendar.getInstance(TimeZone.getTimeZone("Europe/Istanbul"));
+        maxDate = (Calendar) Calendar.getInstance(TimeZone.getTimeZone("Europe/Istanbul"));
         maxDate.add(Calendar.DATE, 7);
         minString = calToString(minDate);
         maxString = calToString(maxDate);
