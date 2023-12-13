@@ -1,10 +1,9 @@
-module com.example.deneme {
-    requires javafx.controls;
+module mainpack.deneme {
+
+    exports mainpack.deneme;
     requires javafx.fxml;
 
-    requires org.controlsfx.controls;
-    requires com.dlsc.formsfx;
+    requires javafx.controls;
+    requires javafx.graphics;
 
-    opens com.example.deneme to javafx.fxml;
-    exports com.example.deneme;
 }
