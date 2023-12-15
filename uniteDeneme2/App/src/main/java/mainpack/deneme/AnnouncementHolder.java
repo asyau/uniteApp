@@ -14,8 +14,8 @@ public class AnnouncementHolder {
 
     public AnnouncementHolder(ArrayList<Announcement> anns) {
         this.anns = anns;
-        minDate = (Calendar) Calendar.getInstance(TimeZone.getTimeZone("Europe/Istanbul"));
-        maxDate = (Calendar) Calendar.getInstance(TimeZone.getTimeZone("Europe/Istanbul"));
+        minDate = Calendar.getInstance(TimeZone.getTimeZone("Europe/Istanbul"));
+        maxDate = Calendar.getInstance(TimeZone.getTimeZone("Europe/Istanbul"));
         maxDate.add(Calendar.DATE, 7);
         minString = calToString(minDate);
         maxString = calToString(maxDate);
@@ -44,13 +44,13 @@ public class AnnouncementHolder {
         return result;
     }
 
-    private void weekForward() {
+    public void weekForward() {
         maxDate.add(Calendar.DATE, 7);
         minDate.add(Calendar.DATE, 7);
         minString = calToString(minDate);
         maxString = calToString(maxDate);
     }
-    private void weekBackward() {
+    public void weekBackward() {
         maxDate.add(Calendar.DATE, -7);
         minDate.add(Calendar.DATE, -7);
         minString = calToString(minDate);
