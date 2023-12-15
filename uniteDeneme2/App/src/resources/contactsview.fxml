@@ -66,8 +66,8 @@
                <children>
                   <TableView fx:id="table" layoutX="-1.0" layoutY="-5.0" prefHeight="488.0" prefWidth="630.0">
                     <columns>
-                      <TableColumn fx:id="photoColumn" prefWidth="75.0" text="Photo" />
-                      <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Name" />
+                      <TableColumn fx:id="photoColumn" prefWidth="45.0" text="Photo" />
+                      <TableColumn fx:id="nameColumn" prefWidth="120.0" text="Name" />
                         <TableColumn fx:id="departmentColumn" prefWidth="75.0" text="Department" />
                         <TableColumn fx:id="officeColumn" prefWidth="75.0" text="Office" />
                         <TableColumn fx:id="titleColumn" prefWidth="75.0" text="Title" />
