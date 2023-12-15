@@ -2,7 +2,6 @@ package mainpack.deneme;
 
 import javafx.scene.control.Alert;
 
-import javax.swing.*;
 import java.util.ArrayList;
 
 public class Authenticator {

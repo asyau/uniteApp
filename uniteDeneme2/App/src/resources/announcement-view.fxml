@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:controller="mainpack.deneme.AnnouncementController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <HBox prefHeight="55.0" prefWidth="900.0" style="-fx-background-color: #003B93;" BorderPane.alignment="CENTER">
          <children>
@@ -42,12 +42,12 @@
          <children>
             <HBox prefHeight="41.0" prefWidth="760.0">
                <children>
-                  <Button fx:id="backDate" mnemonicParsing="false" text="&lt;">
+                  <Button fx:id="weekBackButton" mnemonicParsing="false" text="&lt;">
                      <HBox.margin>
                         <Insets left="250.0" />
                      </HBox.margin>
                   </Button>
-                  <Label fx:id="dateOfEvents" text="Date">
+                  <Label fx:id="dateLabel" text="Date">
                      <HBox.margin>
                         <Insets left="100.0" right="100.0" top="5.0" />
                      </HBox.margin>
@@ -55,7 +55,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Button fx:id="forwardDate" mnemonicParsing="false" text="&gt;" />
+                  <Button fx:id="weekForwardButton" mnemonicParsing="false" text="&gt;" />
                </children>
             </HBox>
             <VBox prefHeight="420.0" prefWidth="760.0">
