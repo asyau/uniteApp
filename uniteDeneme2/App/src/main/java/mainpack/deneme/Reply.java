@@ -8,11 +8,13 @@ public class Reply {
     private Calendar replyDate;
     private User owner;
     private String timePassed;
+    private Question question;
 
-    public Reply(String content, User owner, Calendar replyDate){
+    public Reply(String content, User owner, Calendar replyDate, Question question){
         this.content = content;
         this.owner = owner;
         this.replyDate = replyDate;
+        this.question=question;
         long timeDiff = Calendar.getInstance(TimeZone.getTimeZone("Europe/Istanbul")).getTimeInMillis() - replyDate.getTimeInMillis();
         timeDiff /= (24 * 60 * 60 * 1000);
         System.out.println(timeDiff);
@@ -63,7 +65,9 @@ public class Reply {
             }
         }
     }
-
+    public Question getQuestion() {
+        return question;
+    }
     public Calendar getReplyDate() {
         return replyDate;
     }
@@ -76,4 +80,6 @@ public class Reply {
         return owner;
     }
     public String getTimePassed() { return timePassed; }
+
 }
+

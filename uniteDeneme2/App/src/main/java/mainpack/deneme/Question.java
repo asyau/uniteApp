@@ -1,5 +1,6 @@
 package mainpack.deneme;
 
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.TimeZone;
@@ -13,6 +14,8 @@ public class Question {
     private int tag;
     private String timePassed;
 
+    private int questionID;
+
     public Question(String heading, String info, int tag, Calendar postDate, ArrayList<Reply> replies, User owner){
         this.heading = heading;
         this.info = info;
@@ -20,6 +23,7 @@ public class Question {
         this.postDate = postDate;
         this.replies = replies;
         this.owner = owner;
+        questionID=createQID();
         long timeDiff = Calendar.getInstance(TimeZone.getTimeZone("Europe/Istanbul")).getTimeInMillis() - postDate.getTimeInMillis();
         timeDiff /= (24 * 60 * 60 * 1000);
         System.out.println(timeDiff);
@@ -93,9 +97,38 @@ public class Question {
         return owner;
     }
     public int getTag() {return tag;}
+    public int getQuestionID() {
+        return questionID;
+    }
 
-    public void addReply(String content, User owner) {
-        replies.add(new Reply(content, owner, Calendar.getInstance(TimeZone.getTimeZone("Europe/Istanbul"))));
-        //Save to database.
+    public void addReply(String content, User owner,Question question) {
+        replies.add(new Reply(content, owner, Calendar.getInstance(TimeZone.getTimeZone("Europe/Istanbul")),question));
+    }
+    public int createQID() {
+        String sql= "SELECT MAX(QID) FROM Questions";
+        try (Connection conn = this.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            ResultSet rs = pstmt.executeQuery();
+            int idNext=0;
+            if(rs.next()){
+                idNext=rs.getInt(6)+1;
+            }
+            pstmt.setInt(6, idNext);
+            pstmt.executeUpdate();
+            return idNext;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return 0;
+    }
+    private Connection connect() {
+        String url = "jdbc:sqlite:./MyData.db";
+        Connection conn = null;
+        try {
+            conn = DriverManager.getConnection(url);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return conn;
     }
 }
