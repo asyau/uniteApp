@@ -68,14 +68,10 @@
             </HBox>
             <HBox prefHeight="314.0" prefWidth="730.0">
                <children>
-<<<<<<< Updated upstream
-                  <TextArea prefHeight="308.0" prefWidth="767.0" wrapText="true">
+                  <TextArea fx:id="textInput" prefHeight="308.0" prefWidth="767.0" wrapText="true">
                      <cursor>
                         <Cursor fx:constant="SE_RESIZE" />
                      </cursor></TextArea>
-=======
-                  <TextArea fx:id="textInput" prefHeight="308.0" prefWidth="767.0" />
->>>>>>> Stashed changes
                </children>
             </HBox>
             <Label fx:id="charLimitText" text="Character Limit:  0/280">
