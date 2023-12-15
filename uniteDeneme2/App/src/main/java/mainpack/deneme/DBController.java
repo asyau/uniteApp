@@ -55,5 +55,17 @@ public class DBController {
             System.out.println(e.getMessage());
         }
     }
+    public void InsertNewG250Event(Announcement ans) {
+        String sql = "INSERT INTO GE250EVENTS(organizerClub,eventContent,time) VALUES(?,?,?)";
+        try (Connection conn = this.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1,ans.getOrganizer());
+            pstmt.setString(2, ans.getEventInformation());
+            pstmt.setString(3, ""+ans.getTime().getTimeInMillis());
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
 }

@@ -4,12 +4,12 @@ import java.util.Calendar;
 
 public class Announcement {
     Calendar time;
-    String organize;
+    String organizer;
     String eventInformation;
 
-    public Announcement(Calendar time, String organize, String eventInformation) {
+    public Announcement(Calendar time, String organizer, String eventInformation) {
         this.time = time;
-        this.organize = organize;
+        this.organizer = organizer;
         this.eventInformation = eventInformation;
     }
 
@@ -17,8 +17,8 @@ public class Announcement {
         return time;
     }
 
-    public String getOrganize() {
-        return organize;
+    public String getOrganizer() {
+        return organizer;
     }
 
     public String getEventInformation() {
