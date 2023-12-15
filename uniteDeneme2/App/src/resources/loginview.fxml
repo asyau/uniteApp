@@ -37,7 +37,7 @@
                                         <Font size="14.0" />
                                     </font>
                                 </Label>
-                                <PasswordField alignment="CENTER" prefHeight="26.0" prefWidth="300.0" />
+                                <PasswordField fx:id="password" alignment="CENTER" prefHeight="26.0" prefWidth="300.0" />
                                 <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="300.0" text="Login">
                                     <font>
                                         <Font size="14.0" />
