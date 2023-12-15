@@ -9,6 +9,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
@@ -41,12 +42,18 @@ public class ContactController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        ImageView ugurGudukbay = new ImageView("gudukbay.jpg");
+        ImageView loriDag = new ImageView("loridag.jpg");
+        ImageView ugurDogrusoz = new ImageView("dogrusoz.jpg");
+        ImageView calkan = new ImageView("calkan.jpg");
+        ImageView saksoy = new ImageView("saksoy.jpg");
+
         ArrayList<StaffContact> staffs = new ArrayList<>();
-        staffs.add(new StaffContact("Uğur Güdükbay", "EA", "Prof", "CS", "ug@bilkent.edu.tr", null));
-        staffs.add(new StaffContact("Lori Russel Dağ", "EA", "Instructor", "CS", "lrd@bilkent.edu.tr", null));
-        staffs.add(new StaffContact("Uğur Doğrusöz", "EA", "Prof", "CS", "ud@bilkent.edu.tr", null));
-        staffs.add(new StaffContact("Can Alkan", "EA", "Assoc", "CS", "ca@bilkent.edu.tr", null));
-        staffs.add(new StaffContact("Selim Aksoy", "EA", "Doc", "CS", "saksoy@bilkent.edu.tr", null));
+        staffs.add(new StaffContact("Uğur Güdükbay", "EA", "Prof", "CS", "ug@bilkent.edu.tr", ugurGudukbay));
+        staffs.add(new StaffContact("Lori Russel Dağ", "EA", "Instructor", "CS", "lrd@bilkent.edu.tr", loriDag));
+        staffs.add(new StaffContact("Uğur Doğrusöz", "EA", "Prof", "CS", "ud@bilkent.edu.tr", ugurDogrusoz));
+        staffs.add(new StaffContact("Can Alkan", "EA", "Assoc", "CS", "ca@bilkent.edu.tr", calkan));
+        staffs.add(new StaffContact("Selim Aksoy", "EA", "Doc", "CS", "saksoy@bilkent.edu.tr", saksoy));
 
         ContactHolder h = new ContactHolder(staffs);
 

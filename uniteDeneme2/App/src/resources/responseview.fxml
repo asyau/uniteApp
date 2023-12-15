@@ -7,12 +7,10 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -28,7 +26,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label prefHeight="36.0" prefWidth="178.0" text="RESPONSE" textFill="WHITE" GridPane.columnIndex="1">
+            <Label prefHeight="36.0" prefWidth="178.0" text="Response" textFill="WHITE" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets left="300.0" />
                </GridPane.margin>
@@ -56,7 +54,7 @@
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
             <TextArea prefHeight="115.0" prefWidth="776.0" text="2000 bmw 3.20 sevgilime hediye alicam" />
-            <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="209.0" text="SEND">
+            <Button fx:id="responseSendButton" mnemonicParsing="false" prefHeight="38.0" prefWidth="209.0" text="SEND">
                <VBox.margin>
                   <Insets left="350.0" top="30.0" />
                </VBox.margin>
@@ -67,21 +65,16 @@
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Pane prefHeight="103.0" prefWidth="900.0">
+            <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <AnchorPane layoutX="30.0" layoutY="4.0" prefHeight="64.0" prefWidth="55.0">
+                  <VBox prefHeight="92.0" prefWidth="907.0">
                      <children>
-                        <ImageView fitHeight="69.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../../../../../Desktop/Ekran%20Resmi%202023-05-18%2009.29.25.png" />
-                           </image>
-                        </ImageView>
+                        <Label fx:id="userNameQuestion" prefHeight="17.0" prefWidth="199.0" text="userNameQuestion" />
+                        <Label fx:id="textOfQuestion" prefHeight="76.0" prefWidth="900.0" text="Label" />
                      </children>
-                  </AnchorPane>
-                  <Label layoutX="103.0" layoutY="14.0" text="Atakan Akar" />
-                  <Label layoutX="103.0" layoutY="38.0" text="Günlük araç salcak ?" />
+                  </VBox>
                </children>
-            </Pane>
+            </HBox>
             <ScrollPane prefHeight="250.0" prefWidth="900.0">
                <content>
                   <VBox prefHeight="241.0" prefWidth="898.0">
@@ -96,10 +89,10 @@
                                     <Image url="@../../../../../../../../Desktop/Ekran%20Resmi%202023-05-18%2009.29.25.png" />
                                  </image>
                               </ImageView>
-                              <VBox prefHeight="77.0" prefWidth="406.0">
+                              <VBox prefHeight="77.0" prefWidth="804.0">
                                  <children>
-                                    <Label prefHeight="18.0" prefWidth="107.0" text="Atakan Akar" />
-                                    <Label prefHeight="59.0" text="Temiz kullanımlmış passat günlük 2000" />
+                                    <Label fx:id="userNameResponse" prefHeight="18.0" prefWidth="107.0" text="Atakan Akar" />
+                                    <Label fx:id="textResponse" prefHeight="59.0" text="Temiz kullanımlmış passat günlük 2000" />
                                  </children>
                               </VBox>
                            </children>

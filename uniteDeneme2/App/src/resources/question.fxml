@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox prefHeight="100.0" prefWidth="536.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox prefHeight="92.0" prefWidth="900.0">
+         <children>
+            <Label fx:id="userNameQuestion" prefHeight="17.0" prefWidth="199.0" text="userNameQuestion" />
+            <Label fx:id="textOfQuestion" prefHeight="76.0" prefWidth="900.0" text="Label" />
+         </children>
+      </VBox>
+   </children>
+</HBox>

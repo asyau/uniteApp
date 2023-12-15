@@ -93,22 +93,21 @@
          <content>
             <VBox prefHeight="533.0" prefWidth="733.0">
                <children>
-                  <HBox prefHeight="112.0" prefWidth="733.0">
+                  <HBox prefHeight="65.0" prefWidth="733.0">
                      <children>
                         <ImageView fitHeight="72.0" fitWidth="101.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../../../../Desktop/Ekran%20Resmi%202023-05-18%2009.29.25.png" />
+                              <Image url="@../../../../../Desktop/Ekran%20Resmi%202023-05-18%2009.29.25.png" />
                            </image>
                         </ImageView>
-                        <VBox prefHeight="112.0" prefWidth="420.0">
+                        <VBox prefHeight="72.0" prefWidth="597.0">
                            <children>
-                              <Label prefHeight="18.0" prefWidth="284.0" text="Atakan Akar ">
+                              <Label fx:id="userNameEntry" prefHeight="18.0" prefWidth="284.0" text="Atakan Akar ">
                                  <opaqueInsets>
                                     <Insets />
                                  </opaqueInsets>
                               </Label>
-                              <Label prefHeight="18.0" prefWidth="140.0" text="Atraba  Lazım" />
-                              <Label text="15 dk önce" />
+                              <Label fx:id="textEntry" prefHeight="18.0" prefWidth="140.0" text="Atraba  Lazım" />
                            </children>
                            <HBox.margin>
                               <Insets left="20.0" />
