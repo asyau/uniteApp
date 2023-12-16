@@ -6,8 +6,11 @@ import java.util.ArrayList;
 public class DBController {
     public static void main(String[] args) {
         DBController app = new DBController();
-        User u = new User("erdemmail","erddeeeme","erdem");
+        User u = new User("erdefsmmail","erddeeeme","erdem");
         app.InsertNewUser(u);
+        ArrayList<User>arr= new ArrayList<User>();
+        app.createUserArr(arr);
+        System.out.println(arr);
     }
     private Connection connect() {
         String url = "jdbc:sqlite:/Users/erdemugurlu/Desktop/testDB/MyData.db";
@@ -70,20 +73,22 @@ public class DBController {
             System.out.println(e.getMessage());
         }
     }
-    public void createUserArr(ArrayList<User> arr) {
-        String sql = "SELECT * FROM Users";
-        User u;
-        try (Connection conn = this.connect();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            ResultSet rs =pstmt.executeQuery(sql);
-            while (rs.next()){
-                u = new User(rs.getString(1),rs.getString(2),rs.getString(3));
-                arr.add(u);
-            }
-            pstmt.executeUpdate();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-    }
 
+    public void createUserArr(ArrayList<User> arr) {
+        User u;
+        Connection conn = null;
+       String url="jdbc:sqlite:/Users/erdemugurlu/Desktop/testDB/MyData.db";
+       try{
+           conn=DriverManager.getConnection(url);
+           String sql = "SELECT * FROM Users";
+           Statement stmt = conn.createStatement();
+           ResultSet rs = stmt.executeQuery(sql);
+           while (rs.next()){
+               u = new User(rs.getString(1),rs.getString(2),rs.getString(3));
+               arr.add(u);
+           }
+       }catch (SQLException e) {
+           System.out.println(e.getMessage());
+    }
+    }
 }
