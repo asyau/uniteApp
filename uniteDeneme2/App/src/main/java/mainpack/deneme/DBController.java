@@ -1,13 +1,16 @@
 package mainpack.deneme;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 
 public class DBController {
+    public static void main(String[] args) {
+        DBController app = new DBController();
+        User u = new User("erdemmail","erddeeeme","erdem");
+        app.InsertNewUser(u);
+    }
     private Connection connect() {
-        String url = "jdbc:sqlite:./MyData.db";
+        String url = "jdbc:sqlite:/Users/erdemugurlu/Desktop/testDB/MyData.db";
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(url);
@@ -62,6 +65,21 @@ public class DBController {
             pstmt.setString(1,ans.getOrganizer());
             pstmt.setString(2, ans.getEventInformation());
             pstmt.setString(3, ""+ans.getTime().getTimeInMillis());
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public void createUserArr(ArrayList<User> arr) {
+        String sql = "SELECT * FROM Users";
+        User u;
+        try (Connection conn = this.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            ResultSet rs =pstmt.executeQuery(sql);
+            while (rs.next()){
+                u = new User(rs.getString(1),rs.getString(2),rs.getString(3));
+                arr.add(u);
+            }
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
