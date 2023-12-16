@@ -17,6 +17,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+
+
 public class SignUpController implements Initializable {
     @FXML
     private Button SignUpPageSignUpButton;
@@ -68,7 +70,18 @@ public class SignUpController implements Initializable {
         loginButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                //direct to login page
+                try {
+                    Stage stage = (Stage) loginButton.getScene().getWindow();
+                    stage.close();
+                    Stage primaryStage = new Stage();
+                    Parent root = FXMLLoader.load(getClass().getResource("/loginview.fxml"));
+                    primaryStage.setTitle("Forum");
+                    primaryStage.setScene(new Scene(root,900,600));
+                    primaryStage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    // Handle the exception
+                }
             }
         });
     }
