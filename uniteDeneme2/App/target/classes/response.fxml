@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox maxHeight="77.0" minHeight="77.0" prefHeight="77.0" prefWidth="898.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="90.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+         <HBox.margin>
+            <Insets left="30.0" />
+         </HBox.margin>
+         <image>
+            <Image url="@../../../../../../../../Desktop/Ekran%20Resmi%202023-05-18%2009.29.25.png" />
+         </image>
+      </ImageView>
+      <VBox prefHeight="77.0" prefWidth="406.0">
+         <children>
+            <Label fx:id="userNameResponse" prefHeight="18.0" prefWidth="107.0" text="Atakan Akar" />
+            <Label fx:id="textResponse" prefHeight="59.0" text="Temiz kullanımlmış passat günlük 2000" />
+         </children>
+      </VBox>
+   </children>
+</HBox>

@@ -13,6 +13,8 @@ public class ForumController {
     @FXML
     private Button backButton;
     @FXML
+    private Button qButton;
+    @FXML
     private Label welcomeText;
     @FXML
     public void onBackButtonClick() {
@@ -21,6 +23,21 @@ public class ForumController {
             stage.close();
             Stage primaryStage = new Stage();
             Parent root = FXMLLoader.load(getClass().getResource("/menu-view.fxml"));
+            primaryStage.setTitle("Forum");
+            primaryStage.setScene(new Scene(root,900,600));
+            primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Handle the exception
+        }
+    }
+    @FXML
+    public void onAskAQClick() {
+        try {
+            Stage stage = (Stage) qButton.getScene().getWindow();
+            stage.close();
+            Stage primaryStage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("/askaqview.fxml"));
             primaryStage.setTitle("Forum");
             primaryStage.setScene(new Scene(root,900,600));
             primaryStage.show();

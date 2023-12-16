@@ -10,7 +10,7 @@
 <?import javafx.scene.control.Label?>
 
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:controller="mainpack.deneme.MenuController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <HBox prefHeight="55.0" prefWidth="900.0" style="-fx-background-color: #003B93;" BorderPane.alignment="CENTER">
          <children>
@@ -40,7 +40,7 @@
    <left>
       <VBox prefHeight="545.0" prefWidth="490.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" prefHeight="140.0" prefWidth="450.0" text="FORUM">
+            <Button fx:id="forumButton" mnemonicParsing="false" prefHeight="140.0" prefWidth="450.0" text="FORUM" onAction="#onForumButtonClick">
                <VBox.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </VBox.margin>
@@ -48,7 +48,7 @@
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="140.0" prefWidth="450.0" text="EVENTS">
+            <Button fx:id="eventsButton" mnemonicParsing="false" prefHeight="140.0" prefWidth="450.0" text="EVENTS" onAction="#onEventsButtonClick">
                <VBox.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" />
                </VBox.margin>
@@ -56,7 +56,7 @@
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="140.0" prefWidth="450.0" text="CONTACT INFORMATION">
+            <Button fx:id="contactButton" mnemonicParsing="false" prefHeight="140.0" prefWidth="450.0" text="CONTACT INFORMATION" onAction="#onContactButtonClick">
                <VBox.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" />
                </VBox.margin>

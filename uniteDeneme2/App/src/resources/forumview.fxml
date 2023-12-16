@@ -23,7 +23,7 @@
                   <Insets left="20.0" top="20.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="27.0" text="Ask A Question">
+            <Button fx:id="qButton" mnemonicParsing="false" prefHeight="27.0" text="Ask A Question" onAction="#onAskAQClick">
                <HBox.margin>
                   <Insets left="600.0" top="20.0" />
                </HBox.margin>
