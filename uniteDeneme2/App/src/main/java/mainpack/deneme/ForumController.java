@@ -1,10 +1,13 @@
 package mainpack.deneme;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -19,12 +22,29 @@ import java.util.TimeZone;
 import javafx.scene.Parent;
 
 public class ForumController implements Initializable {
+    private QuestionHolder qh;
     @FXML
     private Button backButton;
     @FXML
     private Button qButton;
     @FXML
     private VBox forumBox;
+    @FXML
+    private Button allqButton;
+    @FXML
+    private Button tpButton;
+    @FXML
+    private Button rmButton;
+    @FXML
+    private Button lfButton;
+    @FXML
+    private Button oButton;
+    @FXML
+    private Button yourqButton;
+    @FXML
+    private Button youraButton;
+    @FXML
+    private TextField filterField;
     @FXML
     public void onBackButtonClick() {
         try {
@@ -78,17 +98,115 @@ public class ForumController implements Initializable {
         qs.add(q4);
         qs.add(q5);
 
+        qh = new QuestionHolder(qs);
 
-        for (int i = 0; i < qs.size(); i++) {
+        Authenticator.currentUser = u1;
+        showAllQuestions();
+
+        allqButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                showAllQuestions();
+            }
+        });
+        tpButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                sort(1);
+            }
+        });
+        rmButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                sort(2);
+            }
+        });
+        lfButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                sort(3);
+            }
+        });
+        oButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                sort(1);
+            }
+        });
+        yourqButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                forumBox.getChildren().clear();
+                for (Question q : qh.getQuestions()) {
+                    if (q.getOwner() == Authenticator.currentUser){
+                        FXMLLoader loader = new FXMLLoader();
+                        loader.setLocation(getClass().getResource("/entry.fxml"));
+                        try {
+                            HBox hbox = loader.load();
+                            EntryItemController eic = loader.getController();
+                            eic.setData(q);
+                            forumBox.getChildren().add(hbox);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+                }
+            }
+        });
+        filterField.textProperty().addListener((observable, oldValue, newValue) -> {
+            filter(newValue);
+        });
+
+    }
+
+
+    public void showAllQuestions(){
+        forumBox.getChildren().clear();
+        for (Question q : qh.getQuestions()) {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/entry.fxml"));
             try {
                 HBox hbox = loader.load();
                 EntryItemController eic = loader.getController();
-                eic.setData(qs.get(i));
+                eic.setData(q);
                 forumBox.getChildren().add(hbox);
             } catch (IOException e) {
                 throw new RuntimeException(e);
+            }
+        }
+    }
+    public void sort(int tag) {
+        forumBox.getChildren().clear();
+        for (Question q : qh.getQuestions()) {
+            if (q.getTag() == tag){
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("/entry.fxml"));
+                try {
+                    HBox hbox = loader.load();
+                    EntryItemController eic = loader.getController();
+                    eic.setData(q);
+                    forumBox.getChildren().add(hbox);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+    }
+    public void filter(String input) {
+        forumBox.getChildren().clear();
+        for (Question q : qh.getQuestions()) {
+            if (q.getInfo().toLowerCase().contains(input.toLowerCase()) ||
+            q.getOwner().getName().toLowerCase().contains(input.toLowerCase())) {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("/entry.fxml"));
+                try {
+                    HBox hbox = loader.load();
+                    EntryItemController eic = loader.getController();
+                    eic.setData(q);
+                    forumBox.getChildren().add(hbox);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         }
     }
