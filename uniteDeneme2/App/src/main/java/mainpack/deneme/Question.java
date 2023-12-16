@@ -23,7 +23,7 @@ public class Question {
         this.postDate = postDate;
         this.replies = replies;
         this.owner = owner;
-        questionID=createQID();
+        //questionID=createQID();
         long timeDiff = Calendar.getInstance(TimeZone.getTimeZone("Europe/Istanbul")).getTimeInMillis() - postDate.getTimeInMillis();
         timeDiff /= (24 * 60 * 60 * 1000);
         System.out.println(timeDiff);
