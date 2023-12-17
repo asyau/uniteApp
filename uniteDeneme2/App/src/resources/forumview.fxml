@@ -89,7 +89,7 @@
        </GridPane>
    </left>
    <center>
-      <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <content>
             <VBox fx:id="forumBox" prefHeight="533.0" prefWidth="733.0">
                <children>

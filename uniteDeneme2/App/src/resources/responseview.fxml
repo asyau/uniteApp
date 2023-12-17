@@ -53,7 +53,7 @@
    <bottom>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <TextArea prefHeight="115.0" prefWidth="776.0" text="2000 bmw 3.20 sevgilime hediye alicam" />
+            <TextArea prefHeight="115.0" prefWidth="776.0" text="" />
             <Button fx:id="responseSendButton" mnemonicParsing="false" prefHeight="38.0" prefWidth="209.0" text="SEND">
                <VBox.margin>
                   <Insets left="350.0" top="30.0" />
@@ -77,7 +77,7 @@
             </HBox>
             <ScrollPane prefHeight="250.0" prefWidth="900.0">
                <content>
-                  <VBox prefHeight="241.0" prefWidth="898.0">
+                  <VBox fx:id="responseBox" prefHeight="241.0" prefWidth="898.0">
                      <children>
                         <HBox maxHeight="77.0" minHeight="77.0" prefHeight="77.0" prefWidth="898.0">
                            <children>

@@ -32,6 +32,11 @@ public class EntryItemController implements Initializable {
     private ImageView entryImage;
     @FXML
     private Button replyButton;
+    @FXML
+    private Label timeSent;
+    @FXML
+    private Label answerNumber;
+    private Question replyQ;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -43,7 +48,10 @@ public class EntryItemController implements Initializable {
             Stage stage = (Stage) replyButton.getScene().getWindow();
             stage.close();
             Stage primaryStage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("/responseview.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/responseview.fxml"));
+            Parent root = loader.load();
+            ResponseController rc = loader.getController();
+            rc.setData(replyQ);
             primaryStage.setTitle("Forum");
             primaryStage.setScene(new Scene(root,900,600));
             primaryStage.show();
@@ -54,7 +62,10 @@ public class EntryItemController implements Initializable {
     }
 
     public void setData(Question q) {
+        replyQ = q;
         entryText.setText(q.getInfo());
         entryName.setText(q.getOwner().getName());
+        timeSent.setText(q.getTimePassed());
+        answerNumber.setText("Answers: " + q.getReplies().size());
     }
 }

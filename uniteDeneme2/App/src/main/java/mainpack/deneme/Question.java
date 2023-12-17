@@ -77,6 +77,7 @@ public class Question {
         System.out.println(timePassed);
     }
 
+    public String getTimePassed() { return timePassed; }
     public String getHeading() {
         return heading;
     }
