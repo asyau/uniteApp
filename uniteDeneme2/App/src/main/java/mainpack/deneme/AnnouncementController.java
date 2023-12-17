@@ -9,10 +9,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.ResourceBundle;
 
 public class AnnouncementController implements Initializable {
@@ -26,6 +30,8 @@ public class AnnouncementController implements Initializable {
     private Label welcomeText;
     @FXML
     private Button backButton;
+    @FXML
+    private VBox announcementBox;
     @FXML
     public void onBackButtonClick() {
         try {
@@ -47,12 +53,22 @@ public class AnnouncementController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        annh = new AnnouncementHolder(null);
+        Calendar c1 = Calendar.getInstance();
+        c1.set(Calendar.DAY_OF_MONTH, 20);
+        c1.set(Calendar.MONTH, 11);
+        Announcement a1 = new Announcement(c1, "Yes", "Ankara Start-up Zirvesi", "Ea 203");
+        Announcement a2 = new Announcement(c1, "Or", "Zıddıbık etkinliği", "Bz 08");
+        ArrayList<Announcement> anns = new ArrayList<Announcement>();
+        anns.add(a1);
+        anns.add(a2);
+        annh = new AnnouncementHolder(anns);
+        showEvents();
         setText();
         weekBackButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
                 annh.weekBackward();
+                showEvents();
                 setText();
             }
         });
@@ -60,6 +76,7 @@ public class AnnouncementController implements Initializable {
             @Override
             public void handle(ActionEvent actionEvent) {
                 annh.weekForward();
+                showEvents();
                 setText();
             }
         });
@@ -68,6 +85,21 @@ public class AnnouncementController implements Initializable {
     private void setText() {
         dateText = String.format("%s - %s", annh.minString, annh.maxString);
         dateLabel.setText(dateText);
+    }
+    public void showEvents(){
+        announcementBox.getChildren().clear();
+        for (Announcement a : annh.filter()) {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/event.fxml"));
+            try {
+                HBox hbox = loader.load();
+                EventItemController eic = loader.getController();
+                eic.setData(a);
+                announcementBox.getChildren().add(hbox);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
 
