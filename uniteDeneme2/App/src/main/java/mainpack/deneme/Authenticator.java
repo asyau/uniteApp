@@ -13,7 +13,9 @@ public class Authenticator {
     }
 
     public static boolean login(String mail, String password) {
+        DBController dbc = new DBController();
         boolean output = false;
+        dbc.createUserArr(users);
         for(User u : users){
             if (mail.equals(u.getMail()) && password.equals(u.getPassword())) {
                 currentUser = u;
@@ -24,10 +26,12 @@ public class Authenticator {
     }
 
     public static boolean signUp(String mail, String password, String name) {
-        users = new ArrayList<User>();
+        DBController dbc = new DBController();
+        dbc.createUserArr(users);
+
         if (isBilkentMail(mail) && !alreadyHasSameUser(mail) && isValidPassword(password)){
             User user = new User(mail, password, name);
-            saveUserToDatabase(user);
+            dbc.InsertNewUser(user);
             currentUser = user;
             System.out.println("valid");
             return true;

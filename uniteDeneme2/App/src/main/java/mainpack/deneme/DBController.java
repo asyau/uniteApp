@@ -1,16 +1,17 @@
 package mainpack.deneme;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class DBController {
-    public static void main(String[] args) {
-        DBController app = new DBController();
-        User u = new User("erdefsmmail","erddeeeme","erdem");
-        app.InsertNewUser(u);
-        ArrayList<User>arr= new ArrayList<User>();
-        app.createUserArr(arr);
-        System.out.println(arr);
+
+    public static Calendar longToCalendar(long timeInMillis) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(timeInMillis);
+        return calendar;
     }
     private Connection connect() {
         String url = "jdbc:sqlite:/Users/erdemugurlu/Desktop/testDB/MyData.db";
@@ -90,5 +91,54 @@ public class DBController {
        }catch (SQLException e) {
            System.out.println(e.getMessage());
     }
+    }
+
+    public void createQuestionArr(ArrayList<Question> arr) {
+        Question q;
+        Connection conn = null;
+        String url="jdbc:sqlite:/Questions/erdemugurlu/Desktop/testDB/MyData.db";
+        try{
+            conn=DriverManager.getConnection(url);
+            String sql = "SELECT * FROM Questions";
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            //(String heading, String info, int tag, Calendar postDate, ArrayList<Reply> replies, User owner)
+            while (rs.next()){
+                String heading = rs.getString(1);
+                String mail = rs.getString(4);
+                User user= null;
+                for (User u : Authenticator.users) {
+                    if (u.getMail().equals(mail))
+                        user = u;
+                }
+                Calendar cal = longToCalendar(Long.parseLong(rs.getString(4)));
+                q = new Question(rs.getString(1),rs.getString(2),rs.getInt(3),cal ,user);
+                arr.add(q);
+            }
+        }catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public void insertNewProfilImage(String url,String currentUserMail){
+        String sql = "INSERT INTO ProfilImages(photoUrl,photoMail) VALUES(?,?)";
+        try (Connection conn = this.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1,url);
+            pstmt.setString(2,currentUserMail);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public void insertNewMenuImage(String url,String currentUserMail){
+        String sql = "INSERT INTO MenuImages(menuPhotoUrl,menuPhotoMail) VALUES(?,?)";
+        try (Connection conn = this.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1,url);
+            pstmt.setString(2,currentUserMail);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
