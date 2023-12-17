@@ -64,6 +64,7 @@ public class FileChooserController {
             File selectedFile = fileChooser.showOpenDialog(stage);
             if (selectedFile != null) {
                 Image image = new Image(selectedFile.toURI().toString());
+                String profilePicUrl = selectedFile.toURI().toString();
                 profilePic.setImage(image);
                 ProfileService.setProfileImage(image);
             } else {
