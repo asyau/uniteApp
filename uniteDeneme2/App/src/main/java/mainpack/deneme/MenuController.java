@@ -4,12 +4,19 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
 import java.io.IOException;
 import javafx.scene.Parent;
 
 public class MenuController {
+
+    @FXML
+    private Button uploadProfilePicButton;
+    @FXML
+    private ImageView menuProfilePic;
     @FXML
     private Label welcomeText;
     @FXML
@@ -31,6 +38,29 @@ public class MenuController {
         } catch (IOException e) {
             e.printStackTrace();
             // Handle the exception
+        }
+    }
+
+    @FXML
+    public void UploadProfilePicButtonClick() {
+        try {
+            Stage stage = (Stage) uploadProfilePicButton.getScene().getWindow();
+            stage.close();
+            Stage primaryStage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("/profilePicUploadPage.fxml"));
+            primaryStage.setTitle("Upload Profile Picture");
+            primaryStage.setScene(new Scene(root,900,600));
+            primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Handle the exception
+        }
+    }
+    @FXML
+    public void initialize() {
+        Image profileImage = ProfileService.getProfileImage();
+        if (profileImage != null) {
+            menuProfilePic.setImage(profileImage);
         }
     }
 

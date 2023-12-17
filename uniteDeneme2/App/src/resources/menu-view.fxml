@@ -13,7 +13,7 @@
    <top>
       <HBox prefHeight="55.0" prefWidth="900.0" style="-fx-background-color: #003B93;" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="uploadProfilePicButton" mnemonicParsing="false" text="Change Profile Picture">
+            <Button fx:id="uploadProfilePicButton" mnemonicParsing="false" text="Change Profile Picture" onAction="#UploadProfilePicButtonClick">
                <font>
                   <Font size="14.0" />
                </font>
