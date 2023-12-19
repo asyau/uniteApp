@@ -13,9 +13,12 @@ public class ResponseItemController {
     private Label userNameResponse;
     @FXML
     private Label textResponse;
+    @FXML
+    private Label timePassed;
 
     public void setData(Reply r) {
         userNameResponse.setText(r.getOwner().getName());
         textResponse.setText(r.getContent());
+        timePassed.setText(r.getTimePassed());
     }
 }

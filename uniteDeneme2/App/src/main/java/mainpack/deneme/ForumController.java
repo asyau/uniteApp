@@ -82,7 +82,8 @@ public class ForumController implements Initializable {
         DBController dbc = new DBController();
         Authenticator.saveUsers();
         forum = new Forum(dbc.createQuestionArr());
-        Authenticator.currentUser = Authenticator.users.get(3);
+        System.out.println(Authenticator.currentUser.name);
+        //Authenticator.currentUser = Authenticator.users.get(3);
 
 
         showAllQuestions();
@@ -122,7 +123,7 @@ public class ForumController implements Initializable {
             public void handle(ActionEvent actionEvent) {
                 forumBox.getChildren().clear();
                 for (Question q : forum.getQuestions()) {
-                    if (q.getOwner() == Authenticator.currentUser){
+                    if (q.getOwner().getMail().equals(Authenticator.currentUser.getMail())){
                         FXMLLoader loader = new FXMLLoader();
                         loader.setLocation(getClass().getResource("/entry.fxml"));
                         try {
@@ -143,7 +144,7 @@ public class ForumController implements Initializable {
                 forumBox.getChildren().clear();
                 ArrayList<Question> qs = new ArrayList<>();
                 for(Reply r : Forum.getReplies()) {
-                    if (r.getOwner().equals(Authenticator.currentUser) && !qs.contains(r.getQuestion()))
+                    if (r.getOwner().getMail().equals(Authenticator.currentUser.getMail()) && !qs.contains(r.getQuestion()))
                         qs.add(r.getQuestion());
                 }
                 for (Question q : qs) {
