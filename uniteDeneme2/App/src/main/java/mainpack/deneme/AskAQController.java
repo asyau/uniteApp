@@ -11,6 +11,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
@@ -24,6 +26,8 @@ import java.util.TimeZone;
 public class AskAQController implements Initializable {
     @FXML
     private Label userName;
+    @FXML
+    private ImageView userImage;
     @FXML
     private Button lostFoundButton;
     @FXML
@@ -43,8 +47,10 @@ public class AskAQController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        DBController dbc = new DBController();
         // Set the text to "Asya" when the FXML is loaded
-        userName.setText("Asya");
+        userName.setText(Authenticator.currentUser.name);
+        userImage.setImage(new Image(dbc.getProfilUrl(Authenticator.currentUser)));
         lostFoundButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {

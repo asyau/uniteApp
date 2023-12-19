@@ -28,7 +28,8 @@ public class Authenticator {
             User user = new User(mail, password, name);
             dbc.InsertNewUser(user);
             currentUser = user;
-            System.out.println("valid");
+            dbc.addNewProfilImage("anon.jpeg", mail);
+            dbc.addNewMenuImage("unite-high-resolution-logo-transparent.png", mail);
             return true;
         } else if (alreadyHasSameUser(mail)) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

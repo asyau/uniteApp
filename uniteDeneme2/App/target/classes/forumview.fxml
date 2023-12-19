@@ -60,22 +60,22 @@
            </rowConstraints>
          <children>
             <Label prefHeight="55.0" prefWidth="166.0" text="MENU" />
-            <Button minWidth="120.0" mnemonicParsing="false" text="All Questions" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="120.0" text="Transportation" GridPane.rowIndex="3" />
-            <Button minWidth="120.0" mnemonicParsing="false" text="Roommate" GridPane.rowIndex="4">
+            <Button fx:id="allqButton" minWidth="120.0" mnemonicParsing="false" text="All Questions" GridPane.rowIndex="2" />
+            <Button fx:id="tpButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="120.0" text="Transportation" GridPane.rowIndex="3" />
+            <Button fx:id="rmButton" minWidth="120.0" mnemonicParsing="false" text="Roommate" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
             </Button>
-            <Button minWidth="120.0" mnemonicParsing="false" text="Your Questions" GridPane.rowIndex="8" />
-            <Button minWidth="120.0" mnemonicParsing="false" text="Your Answers" GridPane.rowIndex="9" />
+            <Button fx:id="yourqButton" minWidth="120.0" mnemonicParsing="false" text="Your Questions" GridPane.rowIndex="8" />
+            <Button fx:id="youraButton" minWidth="120.0" mnemonicParsing="false" text="Your Answers" GridPane.rowIndex="9" />
             <Label prefHeight="18.0" prefWidth="129.0" text="PERSONAL Q&amp;A" GridPane.rowIndex="7" />
-            <Button minWidth="120.0" mnemonicParsing="false" text="Others" GridPane.rowIndex="6" />
-            <Button minWidth="120.0" mnemonicParsing="false" text="Lost &amp; Found" GridPane.rowIndex="5" />
+            <Button fx:id="oButton" minWidth="120.0" mnemonicParsing="false" text="Others" GridPane.rowIndex="6" />
+            <Button fx:id="lfButton" minWidth="120.0" mnemonicParsing="false" text="Lost &amp; Found" GridPane.rowIndex="5" />
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
                <children>
                   <Label text="Search" />
-                  <TextField maxWidth="120.0" minWidth="120.0">
+                  <TextField fx:id="filterField" maxWidth="120.0" minWidth="120.0">
                      <padding>
                         <Insets top="5.0" />
                      </padding>
@@ -89,9 +89,9 @@
        </GridPane>
    </left>
    <center>
-      <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <content>
-            <VBox prefHeight="533.0" prefWidth="733.0">
+            <VBox fx:id="forumBox" prefHeight="533.0" prefWidth="733.0">
                <children>
                   <HBox prefHeight="65.0" prefWidth="733.0">
                      <children>

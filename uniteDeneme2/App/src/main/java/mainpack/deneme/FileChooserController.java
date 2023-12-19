@@ -65,8 +65,11 @@ public class FileChooserController {
             if (selectedFile != null) {
                 Image image = new Image(selectedFile.toURI().toString());
                 String profilePicUrl = selectedFile.toURI().toString();
+                DBController dbc = new DBController();
+                dbc.insertNewProfilImage(profilePicUrl,Authenticator.currentUser.getMail());
                 profilePic.setImage(image);
                 ProfileService.setProfileImage(image);
+
             } else {
                 System.out.println("No file has been selected");
             }

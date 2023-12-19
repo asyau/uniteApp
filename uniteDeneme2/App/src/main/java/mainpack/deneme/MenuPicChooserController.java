@@ -62,6 +62,8 @@ public class MenuPicChooserController {
             if (selectedFile != null) {
                 Image image = new Image(selectedFile.toURI().toString());
                 String profilePicUrl = selectedFile.toURI().toString();
+                DBController dbc = new DBController();
+                dbc.insertNewMenuImage(profilePicUrl,Authenticator.currentUser.getMail());
                 menuPic.setImage(image);
                 MenuService.setMenuImage(image);
             } else {

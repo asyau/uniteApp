@@ -82,8 +82,6 @@ public class ForumController implements Initializable {
         DBController dbc = new DBController();
         Authenticator.saveUsers();
         forum = new Forum(dbc.createQuestionArr());
-        System.out.println(Authenticator.currentUser.name);
-        //Authenticator.currentUser = Authenticator.users.get(3);
 
 
         showAllQuestions();
@@ -97,25 +95,25 @@ public class ForumController implements Initializable {
         tpButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                sort(1);
+                sort(2);
             }
         });
         rmButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                sort(2);
+                sort(3);
             }
         });
         lfButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                sort(3);
+                sort(1);
             }
         });
         oButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                sort(1);
+                sort(4);
             }
         });
         yourqButton.setOnAction(new EventHandler<ActionEvent>() {

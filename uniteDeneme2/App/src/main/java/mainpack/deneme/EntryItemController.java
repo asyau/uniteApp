@@ -62,11 +62,13 @@ public class EntryItemController implements Initializable {
     }
 
     public void setData(Question q) {
+        DBController dbc = new DBController();
         replyQ = q;
         entryText.setText(q.getInfo());
         entryName.setText(q.getOwner().getName());
         timeSent.setText(q.getTimePassed());
         answerNumber.setText("Answers: " + replies(q));
+        entryImage.setImage(new Image(dbc.getProfilUrl(q.getOwner())));
     }
     private int replies(Question q) {
         int count = 0;

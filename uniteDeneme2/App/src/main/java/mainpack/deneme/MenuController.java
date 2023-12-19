@@ -62,14 +62,11 @@ public class MenuController {
     }
     @FXML
     public void initialize() {
-        Image profileImage = ProfileService.getProfileImage();
-        if (profileImage != null) {
-            menuProfilePic.setImage(profileImage);
-        }
-        Image menuPhoto = MenuService.getMenuImage();
-        if (menuPhoto != null) {
-            menuPhotoUploaded.setImage(menuPhoto);
-        }
+        DBController dbc = new DBController();
+        menuProfilePic.setImage(new Image(dbc.getProfilUrl(Authenticator.currentUser)));
+        menuPhotoUploaded.setImage(new Image(dbc.getMenuUrl()));
+
+
     }
 
 

@@ -9,7 +9,7 @@
 
 <HBox maxHeight="77.0" minHeight="77.0" prefHeight="77.0" prefWidth="898.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainpack.deneme.ResponseItemController">
    <children>
-      <ImageView fitHeight="90.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="userPhoto" fitHeight="90.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
          <HBox.margin>
             <Insets left="30.0" />
          </HBox.margin>

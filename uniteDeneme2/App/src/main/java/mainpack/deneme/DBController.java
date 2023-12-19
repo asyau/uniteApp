@@ -24,7 +24,7 @@ public class DBController {
         return calendar;
     }
     private Connection connect() {
-        String url = "jdbc:sqlite:/Users/keremvarnali/Desktop/testDB/MyData.db";
+        String url = "jdbc:sqlite:/Users/erdemugurlu/Desktop/testDB/MyData.db";
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(url);
@@ -96,7 +96,7 @@ public class DBController {
         ArrayList<User> arr = new ArrayList<>();
         User u;
         Connection conn = null;
-        String url="jdbc:sqlite:/Users/keremvarnali/Desktop/testDB/MyData.db";
+        String url="jdbc:sqlite:/Users/erdemugurlu/Desktop/testDB/MyData.db";
         try{
             conn=DriverManager.getConnection(url);
             String sql = "SELECT * FROM Users";
@@ -116,7 +116,7 @@ public class DBController {
         ArrayList<Question> arr = new ArrayList<>();
         Question q;
         Connection conn = null;
-        String url="jdbc:sqlite:/Users/keremvarnali/Desktop/testDB/MyData.db";
+        String url="jdbc:sqlite:/Users/erdemugurlu/Desktop/testDB/MyData.db";
         try{
             conn=DriverManager.getConnection(url);
             String sql = "SELECT * FROM Questions";
@@ -142,33 +142,56 @@ public class DBController {
         }
         return arr;
     }
-//    public void insertNewProfilImage(String url,String currentUserMail){
-//        String sql = "INSERT INTO ProfilImages(photoUrl,photoMail) VALUES(?,?)";
-//        try (Connection conn = this.connect();
-//             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-//            pstmt.setString(1,url);
-//            pstmt.setString(2,currentUserMail);
-//            pstmt.executeUpdate();
-//        } catch (SQLException e) {
-//            System.out.println(e.getMessage());
-//        }
-//    }
-//    public void insertNewMenuImage(String url,String currentUserMail){
-//        String sql = "INSERT INTO MenuImages(menuPhotoUrl,menuPhotoMail) VALUES(?,?)";
-//        try (Connection conn = this.connect();
-//             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-//            pstmt.setString(1,url);
-//            pstmt.setString(2,currentUserMail);
-//            pstmt.executeUpdate();
-//        } catch (SQLException e) {
-//            System.out.println(e.getMessage());
-//        }
-//    }
+    public void insertNewProfilImage(String url,String currentUserMail){
+        System.out.println(url);
+        String sql = "UPDATE Profilimages SET photoUrl = ? WHERE photoMail = ?";
+        try (Connection conn = this.connect();
+             PreparedStatement pst = conn.prepareStatement(sql)) {
+            pst.setString(1, url);
+            pst.setString(2, currentUserMail);
+            pst.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public void insertNewMenuImage(String url,String currentUserMail){
+        String sql = "UPDATE MenuImages SET menuPhotoUrl = ? WHERE menuPhotoMail = ?";
+        try (Connection conn = this.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1,url);
+            pstmt.setString(2,currentUserMail);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public void addNewProfilImage(String url,String currentUserMail){
+        String sql = "INSERT INTO ProfilImages(photoUrl,photoMail) VALUES(?,?)";
+        try (Connection conn = this.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1,url);
+            pstmt.setString(2,currentUserMail);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public void addNewMenuImage(String url,String currentUserMail){
+        String sql = "INSERT INTO MenuImages(menuPhotoUrl,menuPhotoMail) VALUES(?,?)";
+        try (Connection conn = this.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1,url);
+            pstmt.setString(2,currentUserMail);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
     public ArrayList<Reply> createReplyArr() {
         ArrayList<Reply> arr = new ArrayList<>();
         Reply r;
         Connection conn = null;
-        String url="jdbc:sqlite:/Users/keremvarnali/Desktop/testDB/MyData.db";
+        String url="jdbc:sqlite:/Users/erdemugurlu/Desktop/testDB/MyData.db";
         try{
             conn=DriverManager.getConnection(url);
             String sql = "SELECT * FROM Replies";
@@ -197,5 +220,47 @@ public class DBController {
             System.out.println(e.getMessage());
         }
         return arr;
+    }
+    public String getProfilUrl(User u){
+        Connection conn = null;
+        String url="jdbc:sqlite:/Users/erdemugurlu/Desktop/testDB/MyData.db";
+        String pUrl =null;
+        try{
+            conn=DriverManager.getConnection(url);
+            String sql = "SELECT * FROM Profilimages";
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+
+            while (rs.next()){
+                if (rs.getString(2).equals(u.getMail()))
+                    pUrl = rs.getString(1);
+
+            }
+        }catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return pUrl;
+    }
+    public String getMenuUrl(){
+        Connection conn = null;
+        String url="jdbc:sqlite:/Users/erdemugurlu/Desktop/testDB/MyData.db";
+        String pUrl =null;
+        try{
+            conn=DriverManager.getConnection(url);
+            String sql = "SELECT * FROM MenuImages";
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+
+            while (rs.next()){
+                if (rs.getString(2).equals(Authenticator.currentUser.getMail()))
+                    pUrl = rs.getString(1);
+
+            }
+        }catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return pUrl;
     }
 }
