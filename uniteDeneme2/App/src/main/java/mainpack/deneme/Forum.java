@@ -6,20 +6,25 @@ import java.util.Scanner;
 import java.util.TimeZone;
 
 public class Forum {
-    private ArrayList<Question> questions;
-    private ArrayList<Reply> replies;
+    private static ArrayList<Question> questions;
+    private static ArrayList<Reply> replies;
 
-    public Forum(ArrayList<Question> questions, ArrayList<Reply> replies) {
+    public Forum(ArrayList<Question> questions) {
         this.questions = questions;
-        this.replies = replies;
+        DBController dbc = new DBController();
+        this.replies = dbc.createReplyArr();
     }
 
-    public ArrayList<Question> getQuestions() {
+    public static ArrayList<Question> getQuestions() {
         return questions;
     }
 
+    public static ArrayList<Reply> getReplies() {
+        return replies;
+    }
+
     public void addQuestion(String heading, String info, int tag, User owner) {
-        questions.add(new Question(heading, info, tag, Calendar.getInstance(TimeZone.getTimeZone("Europe/Istanbul")), new ArrayList<Reply>(), owner));
+        questions.add(new Question(heading, info, tag, Calendar.getInstance(TimeZone.getTimeZone("Europe/Istanbul")), owner));
     }
     public ArrayList<Question> sort(int tag) {
         ArrayList<Question> result = new ArrayList<>();

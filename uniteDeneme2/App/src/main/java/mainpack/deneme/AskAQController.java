@@ -113,7 +113,7 @@ public class AskAQController implements Initializable {
                 } else {
                     Question q = new Question("Heading", textInput.getText(),tag,
                             Calendar.getInstance(TimeZone.getTimeZone("Europe/Istanbul")),
-                            null, Authenticator.currentUser);
+                            Authenticator.currentUser);
                     DBController dbc = new DBController();
                     dbc.InsertNewQuestion(q);
                     try {

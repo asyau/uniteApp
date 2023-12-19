@@ -13,7 +13,7 @@ public class DBController {
 
         Authenticator.saveUsers();
         Calendar cal = Calendar.getInstance();
-        Question q = new Question("H", "testing dbc", 1, cal, null, Authenticator.users.get(0));
+        Question q = new Question("H", "testing dbc", 1, cal, Authenticator.users.get(0));
         dbc.InsertNewQuestion(q);
     }
 
@@ -69,7 +69,8 @@ public class DBController {
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1,question.getQuestionID());
             pstmt.setString(3, reply.getContent());
-            pstmt.setString(4, reply.getTimePassed());
+            String time = "" + reply.getReplyDate().getTimeInMillis();
+            pstmt.setString(4, time);
 
             if (reply.getOwner()!=null)
                 pstmt.setString(2, reply.getOwner().getMail());
@@ -133,7 +134,7 @@ public class DBController {
                         user = u;
                 }
                 Calendar cal = longToCalendar(Long.parseLong(rs.getString(4)));
-                q = new Question(heading,rs.getString(2),rs.getInt(3),cal, null ,user);
+                q = new Question(heading,rs.getString(2),rs.getInt(3),cal, user);
                 arr.add(q);
             }
         }catch (SQLException e) {
@@ -166,9 +167,8 @@ public class DBController {
     public ArrayList<Reply> createReplyArr() {
         ArrayList<Reply> arr = new ArrayList<>();
         Reply r;
-        ArrayList<Question> qArr = this.createQuestionArr();
         Connection conn = null;
-        String url="jdbc:sqlite:/Users/erdemugurlu/Desktop/testDB/MyData.db";
+        String url="jdbc:sqlite:/Users/keremvarnali/Desktop/testDB/MyData.db";
         try{
             conn=DriverManager.getConnection(url);
             String sql = "SELECT * FROM Replies";
@@ -178,7 +178,7 @@ public class DBController {
                 int relatedQID = rs.getInt(1);
                 String mail = rs.getString(2);
                 Question q = null;
-                for (Question question :qArr ) {
+                for (Question question : Forum.getQuestions() ) {
                     if (question.getQuestionID()==rs.getInt(1))
                         q=question;
                 }

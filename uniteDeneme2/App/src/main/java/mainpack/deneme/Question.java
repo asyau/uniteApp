@@ -9,20 +9,18 @@ public class Question {
     private String heading;
     private String info;
     private Calendar postDate;
-    private ArrayList<Reply> replies;
     private User owner;
     private int tag;
     private String timePassed;
 
     private int questionID;
-    private static int count = 0;
+    public static int count = 0;
 
-    public Question(String heading, String info, int tag, Calendar postDate, ArrayList<Reply> replies, User owner){
+    public Question(String heading, String info, int tag, Calendar postDate, User owner){
         this.heading = heading;
         this.info = info;
         this.tag = tag;
         this.postDate = postDate;
-        this.replies = replies;
         this.owner = owner;
         questionID=count;
         count++;
@@ -90,10 +88,6 @@ public class Question {
         return postDate;
     }
 
-    public ArrayList<Reply> getReplies() {
-        return replies;
-    }
-
     public User getOwner() {
         return owner;
     }
@@ -102,7 +96,4 @@ public class Question {
         return questionID;
     }
 
-    public void addReply(String content, User owner,Question question) {
-        replies.add(new Reply(content, owner, Calendar.getInstance(TimeZone.getTimeZone("Europe/Istanbul")),question));
-    }
 }

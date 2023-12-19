@@ -78,10 +78,11 @@ public class ForumController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        Question.count = 0;
         DBController dbc = new DBController();
         Authenticator.saveUsers();
-        forum = new Forum(dbc.createQuestionArr(), null);
-        Authenticator.currentUser = Authenticator.users.get(0);
+        forum = new Forum(dbc.createQuestionArr());
+        Authenticator.currentUser = Authenticator.users.get(3);
 
 
         showAllQuestions();
@@ -132,6 +133,29 @@ public class ForumController implements Initializable {
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         }
+                    }
+                }
+            }
+        });
+        youraButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                forumBox.getChildren().clear();
+                ArrayList<Question> qs = new ArrayList<>();
+                for(Reply r : Forum.getReplies()) {
+                    if (r.getOwner().equals(Authenticator.currentUser) && !qs.contains(r.getQuestion()))
+                        qs.add(r.getQuestion());
+                }
+                for (Question q : qs) {
+                    FXMLLoader loader = new FXMLLoader();
+                    loader.setLocation(getClass().getResource("/entry.fxml"));
+                    try {
+                        HBox hbox = loader.load();
+                        EntryItemController eic = loader.getController();
+                        eic.setData(q);
+                        forumBox.getChildren().add(hbox);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
                     }
                 }
             }
