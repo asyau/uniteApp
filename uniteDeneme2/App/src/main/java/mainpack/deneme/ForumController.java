@@ -22,7 +22,7 @@ import java.util.TimeZone;
 import javafx.scene.Parent;
 
 public class ForumController implements Initializable {
-    private QuestionHolder qh;
+    private Forum forum;
     @FXML
     private Button backButton;
     @FXML
@@ -78,33 +78,12 @@ public class ForumController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        User u1 = new User("kv@ug.bilkent.edu.tr", "1234567", "Kerem Varnalı");
-        User u2 = new User("aa@ug.bilkent.edu.tr", "1234567", "Atakan Akar");
-        User u3 = new User("ba@ug.bilkent.edu.tr", "1234567", "Bilgehan Akın");
-        User u4 = new User("aü@ug.bilkent.edu.tr", "1234567", "Asya Ünal");
-        User u5 = new User("eu@ug.bilkent.edu.tr", "1234567", "Erdem Uğurlu");
-        Calendar cal1 = Calendar.getInstance(TimeZone.getTimeZone("Europe/Istanbul"));
-        cal1.add(Calendar.HOUR, -3);
-        Calendar cal2 = Calendar.getInstance(TimeZone.getTimeZone("Europe/Istanbul"));
-        ArrayList<Reply> replies = new ArrayList<>();
-        replies.add(new Reply("200 TL'ye alabilirim", u1, cal1, null));
-        replies.add(new Reply("Olur depocu arkasında buluşalım", u3, cal1, null));
-        cal2.add(Calendar.DATE, -1);
-        Question q1 = new Question("","Bilkent 3'te ev arıyorum", 1, cal1, new ArrayList<>(), u1);
-        Question q2 = new Question("","Havalimanına yarın 14:30da gidicem", 2, cal2, new ArrayList<>(), u2);
-        Question q3 = new Question("","Adamlar konserine 2 biletim var", 3, cal1, replies, u3);
-        Question q4 = new Question("","BASYS3 kartı satan var mı?", 1, cal2, new ArrayList<>(), u4);
-        Question q5 = new Question("","Okeye gidiyorum 4. aranıyor", 1, cal1, new ArrayList<>(), u5);
-        ArrayList<Question> qs = new ArrayList<>();
-        qs.add(q1);
-        qs.add(q2);
-        qs.add(q3);
-        qs.add(q4);
-        qs.add(q5);
+        DBController dbc = new DBController();
+        Authenticator.saveUsers();
+        forum = new Forum(dbc.createQuestionArr(), null);
+        Authenticator.currentUser = Authenticator.users.get(0);
 
-        qh = new QuestionHolder(qs);
 
-        Authenticator.currentUser = u1;
         showAllQuestions();
 
         allqButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -141,7 +120,7 @@ public class ForumController implements Initializable {
             @Override
             public void handle(ActionEvent actionEvent) {
                 forumBox.getChildren().clear();
-                for (Question q : qh.getQuestions()) {
+                for (Question q : forum.getQuestions()) {
                     if (q.getOwner() == Authenticator.currentUser){
                         FXMLLoader loader = new FXMLLoader();
                         loader.setLocation(getClass().getResource("/entry.fxml"));
@@ -166,7 +145,7 @@ public class ForumController implements Initializable {
 
     public void showAllQuestions(){
         forumBox.getChildren().clear();
-        for (Question q : qh.getQuestions()) {
+        for (Question q : forum.getQuestions()) {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/entry.fxml"));
             try {
@@ -181,7 +160,7 @@ public class ForumController implements Initializable {
     }
     public void sort(int tag) {
         forumBox.getChildren().clear();
-        for (Question q : qh.getQuestions()) {
+        for (Question q : forum.getQuestions()) {
             if (q.getTag() == tag){
                 FXMLLoader loader = new FXMLLoader();
                 loader.setLocation(getClass().getResource("/entry.fxml"));
@@ -198,7 +177,7 @@ public class ForumController implements Initializable {
     }
     public void filter(String input) {
         forumBox.getChildren().clear();
-        for (Question q : qh.getQuestions()) {
+        for (Question q : forum.getQuestions()) {
             if (q.getInfo().toLowerCase().contains(input.toLowerCase()) ||
             q.getOwner().getName().toLowerCase().contains(input.toLowerCase())) {
                 FXMLLoader loader = new FXMLLoader();

@@ -66,6 +66,6 @@ public class EntryItemController implements Initializable {
         entryText.setText(q.getInfo());
         entryName.setText(q.getOwner().getName());
         timeSent.setText(q.getTimePassed());
-        answerNumber.setText("Answers: " + q.getReplies().size());
+        //answerNumber.setText("Answers: " + q.getReplies().size());
     }
 }

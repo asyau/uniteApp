@@ -15,6 +15,7 @@ public class Question {
     private String timePassed;
 
     private int questionID;
+    private static int count = 0;
 
     public Question(String heading, String info, int tag, Calendar postDate, ArrayList<Reply> replies, User owner){
         this.heading = heading;
@@ -23,7 +24,8 @@ public class Question {
         this.postDate = postDate;
         this.replies = replies;
         this.owner = owner;
-        //questionID=createQID();
+        questionID=count;
+        count++;
         long timeDiff = Calendar.getInstance(TimeZone.getTimeZone("Europe/Istanbul")).getTimeInMillis() - postDate.getTimeInMillis();
         timeDiff /= (24 * 60 * 60 * 1000);
         System.out.println(timeDiff);
@@ -73,8 +75,6 @@ public class Question {
                 timePassed = String.format("%d seconds ago", timeDiff);
             }
         }
-        System.out.println(timeDiff);
-        System.out.println(timePassed);
     }
 
     public String getTimePassed() { return timePassed; }
@@ -104,32 +104,5 @@ public class Question {
 
     public void addReply(String content, User owner,Question question) {
         replies.add(new Reply(content, owner, Calendar.getInstance(TimeZone.getTimeZone("Europe/Istanbul")),question));
-    }
-    public int createQID() {
-        String sql= "SELECT MAX(QID) FROM Questions";
-        try (Connection conn = this.connect();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            ResultSet rs = pstmt.executeQuery();
-            int idNext=0;
-            if(rs.next()){
-                idNext=rs.getInt(6)+1;
-            }
-            pstmt.setInt(6, idNext);
-            pstmt.executeUpdate();
-            return idNext;
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-        return 0;
-    }
-    private Connection connect() {
-        String url = "jdbc:sqlite:./MyData.db";
-        Connection conn = null;
-        try {
-            conn = DriverManager.getConnection(url);
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-        return conn;
     }
 }

@@ -7,9 +7,11 @@ import java.util.TimeZone;
 
 public class Forum {
     private ArrayList<Question> questions;
+    private ArrayList<Reply> replies;
 
-    public Forum(ArrayList<Question> questions) {
+    public Forum(ArrayList<Question> questions, ArrayList<Reply> replies) {
         this.questions = questions;
+        this.replies = replies;
     }
 
     public ArrayList<Question> getQuestions() {

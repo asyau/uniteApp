@@ -113,10 +113,9 @@ public class AskAQController implements Initializable {
                 } else {
                     Question q = new Question("Heading", textInput.getText(),tag,
                             Calendar.getInstance(TimeZone.getTimeZone("Europe/Istanbul")),
-                            null, null);
-                    //Save to database.
-                    //Direct to other page.
-
+                            null, Authenticator.currentUser);
+                    DBController dbc = new DBController();
+                    dbc.InsertNewQuestion(q);
                     try {
                         Stage stage = (Stage) sendButton.getScene().getWindow();
                         stage.close();
