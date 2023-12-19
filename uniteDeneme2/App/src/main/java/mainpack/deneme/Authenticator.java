@@ -5,9 +5,10 @@ import javafx.scene.control.Alert;
 import java.util.ArrayList;
 
 public class Authenticator {
-
-    static ArrayList<User> users;
+    static DBController dbc = new DBController();
+    static ArrayList<User> users=dbc.createUserArr();
     static User currentUser;
+
 
     public static boolean login(String mail, String password) {
         boolean output = false;
