@@ -17,7 +17,7 @@ public class Forum {
     }
 
     public void addQuestion(String heading, String info, int tag, User owner) {
-        questions.add(new Question(heading, info, tag, Calendar.getInstance(TimeZone.getTimeZone("Europe/Istanbul")), new ArrayList<Reply>(), owner));
+        questions.add(new Question(heading, info, tag, Calendar.getInstance(TimeZone.getTimeZone("Europe/Istanbul")), owner));
     }
     public ArrayList<Question> sort(int tag) {
         ArrayList<Question> result = new ArrayList<>();

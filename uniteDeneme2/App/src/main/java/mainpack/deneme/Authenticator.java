@@ -5,17 +5,26 @@ import javafx.scene.control.Alert;
 import java.util.ArrayList;
 
 public class Authenticator {
+    DBController dbb;
+    static ArrayList<User> users= new ArrayList<>();
+    static  DBController dbc = new DBController();
 
-    static ArrayList<User> users;
+    static ArrayList<User> userArr =dbc.createUserArr(users);
     static User currentUser;
-    public Authenticator(ArrayList<User> users) {
-        this.users = users;
+    public Authenticator() {
+        users=new ArrayList<User>();
+        dbb= new DBController();
+        dbb.createUserArr(users);
     }
 
     public static boolean login(String mail, String password) {
+        System.out.println("erdem olmuo");
         DBController dbc = new DBController();
         boolean output = false;
         dbc.createUserArr(users);
+        for (User u: users) {
+            System.out.println(u);
+        }
         for(User u : users){
             if (mail.equals(u.getMail()) && password.equals(u.getPassword())) {
                 currentUser = u;

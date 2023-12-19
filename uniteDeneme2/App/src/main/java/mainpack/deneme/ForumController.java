@@ -90,11 +90,11 @@ public class ForumController implements Initializable {
         replies.add(new Reply("200 TL'ye alabilirim", u1, cal1, null));
         replies.add(new Reply("Olur depocu arkasında buluşalım", u3, cal1, null));
         cal2.add(Calendar.DATE, -1);
-        Question q1 = new Question("","Bilkent 3'te ev arıyorum", 1, cal1, new ArrayList<>(), u1);
-        Question q2 = new Question("","Havalimanına yarın 14:30da gidicem", 2, cal2, new ArrayList<>(), u2);
-        Question q3 = new Question("","Adamlar konserine 2 biletim var", 3, cal1, replies, u3);
-        Question q4 = new Question("","BASYS3 kartı satan var mı?", 1, cal2, new ArrayList<>(), u4);
-        Question q5 = new Question("","Okeye gidiyorum 4. aranıyor", 1, cal1, new ArrayList<>(), u5);
+        Question q1 = new Question("","Bilkent 3'te ev arıyorum", 1, cal1, u1);
+        Question q2 = new Question("","Havalimanına yarın 14:30da gidicem", 2, cal2, u2);
+        Question q3 = new Question("","Adamlar konserine 2 biletim var", 3, cal1, u3);
+        Question q4 = new Question("","BASYS3 kartı satan var mı?", 1, cal2, u4);
+        Question q5 = new Question("","Okeye gidiyorum 4. aranıyor", 1, cal1,  u5);
         ArrayList<Question> qs = new ArrayList<>();
         qs.add(q1);
         qs.add(q2);

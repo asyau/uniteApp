@@ -112,8 +112,7 @@ public class AskAQController implements Initializable {
                     alert.showAndWait();
                 } else {
                     Question q = new Question("Heading", textInput.getText(),tag,
-                            Calendar.getInstance(TimeZone.getTimeZone("Europe/Istanbul")),
-                            null, null);
+                            Calendar.getInstance(TimeZone.getTimeZone("Europe/Istanbul")),null);
                     //Save to database.
                     //Direct to other page.
 
