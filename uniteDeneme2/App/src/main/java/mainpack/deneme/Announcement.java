@@ -9,7 +9,9 @@ public class Announcement {
     String place;
 
     public Announcement(Calendar time, String organizer, String eventInformation, String place) {
-        this.time = time;
+        Calendar thisCalendar = Calendar.getInstance();
+        copyCalendarProperties(time, thisCalendar);
+        this.time = thisCalendar;
         this.organizer = organizer;
         this.eventInformation = eventInformation;
         this.place = place;
@@ -27,4 +29,12 @@ public class Announcement {
     }
 
     public String getPlace() {return place;}
+
+    private static void copyCalendarProperties(Calendar source, Calendar destination) {
+        // Copy individual properties from the source to the destination
+        destination.set(Calendar.YEAR, source.get(Calendar.YEAR));
+        destination.set(Calendar.MONTH, source.get(Calendar.MONTH));
+        destination.set(Calendar.DAY_OF_MONTH, source.get(Calendar.DAY_OF_MONTH));
+        // ... copy other properties as needed
+    }
 }
