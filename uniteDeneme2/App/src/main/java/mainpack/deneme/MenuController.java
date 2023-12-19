@@ -16,7 +16,11 @@ public class MenuController {
     @FXML
     private Button uploadProfilePicButton;
     @FXML
+    private Button uploadMenuPhoto;
+    @FXML
     private ImageView menuProfilePic;
+    @FXML
+    private ImageView menuPhotoUploaded;
     @FXML
     private Label welcomeText;
     @FXML
@@ -42,12 +46,12 @@ public class MenuController {
     }
 
     @FXML
-    public void UploadProfilePicButtonClick() {
+    public void onUploadMenuButtonClick() {
         try {
             Stage stage = (Stage) uploadProfilePicButton.getScene().getWindow();
             stage.close();
             Stage primaryStage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("/profilePicUploadPage.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/uploadMenuPicture.fxml"));
             primaryStage.setTitle("Upload Profile Picture");
             primaryStage.setScene(new Scene(root,900,600));
             primaryStage.show();
@@ -62,7 +66,12 @@ public class MenuController {
         if (profileImage != null) {
             menuProfilePic.setImage(profileImage);
         }
+        Image menuPhoto = MenuService.getMenuImage();
+        if (menuPhoto != null) {
+            menuPhotoUploaded.setImage(menuPhoto);
+        }
     }
+
 
     @FXML
     public void onEventsButtonClick() {
@@ -88,6 +97,21 @@ public class MenuController {
             Stage primaryStage = new Stage();
             Parent root = FXMLLoader.load(getClass().getResource("/contactsview.fxml"));
             primaryStage.setTitle("Contact Information");
+            primaryStage.setScene(new Scene(root,900,600));
+            primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Handle the exception
+        }
+    }
+    @FXML
+    public void UploadProfilePicButtonClick() {
+        try {
+            Stage stage = (Stage) uploadProfilePicButton.getScene().getWindow();
+            stage.close();
+            Stage primaryStage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("/profilePicUploadPage.fxml"));
+            primaryStage.setTitle("Upload Profile Picture");
             primaryStage.setScene(new Scene(root,900,600));
             primaryStage.show();
         } catch (IOException e) {
